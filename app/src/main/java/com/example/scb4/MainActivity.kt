@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(this,view,"welcome to android at scb",Snackbar.LENGTH_SHORT).show()
         //Intent homeIntent = new Intent();
         var homeIntent : Intent = Intent(this,HomeActivity::class.java)
+        homeIntent.putExtra("name","abdul")
+        homeIntent.putExtra("subject","android")
         startActivity(homeIntent)
 
     }
