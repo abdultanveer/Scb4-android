@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun sayHello(view: View) {
+        add(10,20)
+
         var view = findViewById<ConstraintLayout>(R.id.constraint_lyt)
         Snackbar.make(this,view,"welcome to android at scb",Snackbar.LENGTH_SHORT).show()
         //Intent homeIntent = new Intent();
@@ -55,5 +57,11 @@ class MainActivity : AppCompatActivity() {
         homeIntent.putExtra("subject","android")
         startActivity(homeIntent)
 
+    }
+
+    private fun add(i: Int, i1: Int) {
+
+        var d = 20;
+        var f = i+ d
     }
 }

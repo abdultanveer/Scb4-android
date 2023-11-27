@@ -20,6 +20,13 @@ TextView tvName;
       tvName.setText(nameReceived);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+      //  throw  new NullPointerException("demo crash");
+    }
+
     public void openDialer(View view) {
         Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456789"));
         startActivity(dialIntent);
