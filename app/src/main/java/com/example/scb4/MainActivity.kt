@@ -1,5 +1,6 @@
 package com.example.scb4
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,5 +18,9 @@ class MainActivity : AppCompatActivity() {
     fun sayHello(view: View) {
         var view = findViewById<ConstraintLayout>(R.id.constraint_lyt)
         Snackbar.make(this,view,"welcome to android at scb",Snackbar.LENGTH_SHORT).show()
+        //Intent homeIntent = new Intent();
+        var homeIntent : Intent = Intent(this,HomeActivity::class.java)
+        startActivity(homeIntent)
+
     }
 }
