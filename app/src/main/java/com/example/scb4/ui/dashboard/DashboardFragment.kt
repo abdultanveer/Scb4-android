@@ -32,6 +32,14 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+        binding.tvCounter.text = dashboardViewModel.number.toString()
+
+
+        binding.btnAdd.setOnClickListener{
+            dashboardViewModel.addNumber()
+            binding.tvCounter.text = dashboardViewModel.number.toString()
+        }
+
         return root
     }
 

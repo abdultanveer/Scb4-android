@@ -10,4 +10,10 @@ class DashboardViewModel : ViewModel() {
         value = "This is dashboard Fragment"
     }
     val text: LiveData<String> = _text
+
+    var number = 0
+
+    fun addNumber(){
+        number++
+    }
 }
