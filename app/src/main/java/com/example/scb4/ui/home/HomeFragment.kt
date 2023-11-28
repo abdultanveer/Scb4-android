@@ -6,10 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.scb4.InventoryApplication
+import com.example.scb4.data.Item
 import com.example.scb4.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+    private val viewModel: HomeViewModel by activityViewModels {
+        InventoryViewModelFactory(
+            (activity?.application as InventoryApplication).database
+                .itemDao()
+        )
+    }
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -31,6 +40,10 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+
+        binding.btnInsert.setOnClickListener{
+            viewModel.insertItem(Item(22,"itemname",33.33,44))
         }
         return root
     }
