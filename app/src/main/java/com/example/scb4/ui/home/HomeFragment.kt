@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.scb4.InventoryApplication
 import com.example.scb4.data.Item
 import com.example.scb4.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-    private val viewModel: HomeViewModel by activityViewModels {
+    private val viewModel: HomeViewModel by viewModels<HomeViewModel> {
         InventoryViewModelFactory(
             (activity?.application as InventoryApplication).database
                 .itemDao()
@@ -31,17 +32,17 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+       /* val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
-
+*/
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        /*homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-
+*/
         binding.btnInsert.setOnClickListener{
             viewModel.insertItem(Item(22,"itemname",33.33,44))
         }
