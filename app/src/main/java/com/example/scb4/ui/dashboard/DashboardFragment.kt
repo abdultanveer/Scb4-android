@@ -29,15 +29,17 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        dashboardViewModel.startTime()
+        dashboardViewModel.seconds().observe(viewLifecycleOwner) {
+            textView.text = it.toString()
         }
         binding.tvCounter.text = dashboardViewModel.number.toString()
 
 
         binding.btnAdd.setOnClickListener{
-            dashboardViewModel.addNumber()
-            binding.tvCounter.text = dashboardViewModel.number.toString()
+            dashboardViewModel.startTime()
+           // dashboardViewModel.addNumber()
+            //binding.tvCounter.text = dashboardViewModel.number.toString()
         }
 
         return root
