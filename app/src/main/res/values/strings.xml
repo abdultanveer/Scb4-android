@@ -2,4 +2,8 @@
     <string name="app_name">Scb4</string>
     <string name="enter_name_hint">enter name</string>
     <string name="enter_pin_hint">enter pin</string>
+    <string name="title_activity_bottom_nav">BottomNavActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
