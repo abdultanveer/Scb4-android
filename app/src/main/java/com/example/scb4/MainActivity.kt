@@ -6,20 +6,29 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
+    lateinit var recyclerView: RecyclerView
+
+    var countries = arrayOf("india","australia","uk","usa","india","australia","uk","usa")
 
  var TAG = MainActivity::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) //inflating the activity_main.xml
         Log.i(TAG,"oncreate")
+        recyclerView = findViewById(R.id.recyclerView)
     }
 
     override fun onStart() {
         super.onStart()
         Log.e(TAG,"start")
+        var adapter = CountriesAdapter(countries)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 
     }
 
