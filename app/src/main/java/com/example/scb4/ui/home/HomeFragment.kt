@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.scb4.InventoryApplication
 import com.example.scb4.data.Item
 import com.example.scb4.databinding.FragmentHomeBinding
@@ -44,9 +42,28 @@ class HomeFragment : Fragment() {
         }
 */
         binding.btnInsert.setOnClickListener{
-            viewModel.insertItem(Item(22,"itemname",33.33,44))
+            addItem()
         }
+
+        binding.btnGet.setOnClickListener {
+            findItem()
+        }
+
         return root
+    }
+
+    private fun findItem() {
+        viewModel.retrieveItem(binding.etId.text.toString().toInt()).observe(this.viewLifecycleOwner) {
+            foundItem -> binding.tvItem.text = foundItem.toString()
+        }
+    }
+
+    private fun addItem() {
+
+        var name = binding.etItemName.text.toString()
+        var price = binding.etItemPrice.text.toString().toDouble()
+        var quantity = binding.etQuantity.text.toString().toInt()
+        viewModel.insertItem(Item(itemName = name, itemPrice = price, quantityInStock = quantity))
     }
 
     override fun onDestroyView() {
